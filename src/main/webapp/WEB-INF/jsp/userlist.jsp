@@ -13,7 +13,7 @@
     <title>User List</title>
 </head>
 <body>
-<a href="addpage.jhtml"/>用户注册</a>
+<a href="/user/addpage"/>用户注册</a>
 <br/>
 <br/>
 <span >所有用户</span>
@@ -37,8 +37,8 @@
             <td>${user.email}</td>
             <td>${user.phone}</td>
             <td>
-                <a href="deleteUser.jhtml?id=${user.id}">删除</a>
-                <a href="editUser.jhtml?id=${user.id}">编辑</a>
+                <a href="/user/deleteUser?id=${user.id}">删除</a>
+                <a href="/user/editUser?id=${user.id}">编辑</a>
             </td>
         </tr>
     </c:forEach>

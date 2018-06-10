@@ -18,6 +18,7 @@ import java.util.List;
  * Created by wangbin on 2018/06/10.
  */
 @Controller
+@RequestMapping("user")
 public class UserController {
     private Logger logger = Logger.getLogger(this.getClass());
 
@@ -31,7 +32,7 @@ public class UserController {
      * @Title: addPage
      * @Description: 用户添加页面
      */
-    @RequestMapping("addpage.jhtml")
+    @RequestMapping("addpage")
     public String addPage(ModelMap mm) {
         logger.info("add page...");
         return "/register";
@@ -46,7 +47,7 @@ public class UserController {
      * @Title: Regiseter
      * @Description: 用户添加操作
      */
-    @RequestMapping("register.jhtml")
+    @RequestMapping("register")
     public void Regiseter(HttpServletRequest request, HttpServletResponse response, User user) throws IOException, ServletException {
         int result = 0;
         if (user != null) {
@@ -54,10 +55,10 @@ public class UserController {
         }
         if (result > 0) {
             logger.info("注册成功..");
-            response.sendRedirect("/allUser.jhtml");
+            response.sendRedirect("/user/allUser");
         } else {
             logger.error("注册失败");
-            request.getRequestDispatcher("/500.jhtml").forward(request, response);
+            request.getRequestDispatcher("/user/500").forward(request, response);
         }
     }
 
@@ -67,7 +68,7 @@ public class UserController {
      * @Title: listUser
      * @Description: 列表显示所有用户
      */
-    @RequestMapping("allUser.jhtml")
+    @RequestMapping("allUser")
     public String listUser(ModelMap mm) {
         List<User> list = userService.getUserList();
         mm.put("list", list);
@@ -82,7 +83,7 @@ public class UserController {
      * @Title: editUser
      * @Description: 用户信息编辑页面
      */
-    @RequestMapping("editUser.jhtml")
+    @RequestMapping("editUser")
     public String editUser(String id, ModelMap mm) {
         User user = userService.getUser(Integer.parseInt(id));
         mm.put("user", user);
@@ -98,16 +99,16 @@ public class UserController {
      * @Title: updateUser
      * @Description: 更新用户信息
      */
-    @RequestMapping("updateUser.jhtml")
+    @RequestMapping("updateUser")
     public void updateUser(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
         int result = userService.updateUser(user);
         if (result > 0) {
             logger.info("更新用户数据成功");
-            response.sendRedirect("/allUser.jhtml");
+            response.sendRedirect("/user/allUser");
 
         } else {
             logger.error("更新用户数据失败");
-            request.getRequestDispatcher("/500.jhtml").forward(request, response);
+            request.getRequestDispatcher("/user/500").forward(request, response);
 
         }
     }
@@ -120,16 +121,16 @@ public class UserController {
      * @Title: deleteUserById
      * @Description: 删除一条用户记录
      */
-    @RequestMapping("deleteUser.jhtml")
+    @RequestMapping("deleteUser")
     public void deleteUserById(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
         int result = userService.deleteUser(Integer.parseInt(id));
         if (result > 0) {
             logger.info("删除用户数据成功..");
-            response.sendRedirect("/allUser.jhtml");
+            response.sendRedirect("/user/allUser");
 
         } else {
             logger.error("删除用户数据失败..");
-            request.getRequestDispatcher("/500.jhtml").forward(request, response);
+            request.getRequestDispatcher("/user/500").forward(request, response);
 
         }
     }

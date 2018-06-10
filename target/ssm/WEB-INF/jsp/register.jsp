@@ -15,10 +15,10 @@
 </head>
 <body>
 <c:if test="${empty user}">
-<form action="register.jhtml" method="post">
+<form action="/user/register" method="post">
     </c:if>
     <c:if test="${not empty user}">
-    <form action="updateUser.jhtml" method="post">
+    <form action="/user/updateUser" method="post">
         <input type="hidden" value="${user.id}" name="id">
         </c:if>
         <table>
