@@ -218,3 +218,4 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: com.wangbin.enti
 2018-06-10 23:05:23,446 INFO  com.wangbin.controller.UserController - add page...
 2018-06-10 23:05:36,416 INFO  com.wangbin.controller.UserController - 注册成功..
 2018-06-10 23:05:52,067 INFO  com.wangbin.controller.UserController - 删除用户数据成功..
+2018-06-10 23:24:50,608 WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'springmvc'
